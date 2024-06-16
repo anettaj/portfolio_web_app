@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter/material.dart';
 import '../Widgets/ClientCard.dart';
@@ -25,6 +26,7 @@ class MobileHome extends StatelessWidget {
     var key1 = GlobalKey();
     var key2 = GlobalKey();
     var key3 = GlobalKey();
+    var key4 = GlobalKey();
     return Column(
       children: [
         // Nav And Hero section
@@ -43,19 +45,22 @@ class MobileHome extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Builder(
-                        builder: (context) {
-                          return InkWell(
-                            onTap: () {
-                              Scaffold.of(context).openEndDrawer();
-                            },
-                            child: Icon(
-                              Icons.menu,
-                              size: 40,
-                              color: Colors.white,
-                            ),
-                          );
-                        },
+                      
+                      SafeArea(
+                        child: Builder(
+                          builder: (context) {
+                            return InkWell(
+                              onTap: () {
+                                Scaffold.of(context).openEndDrawer();
+                              },
+                              child: Icon(
+                                Icons.menu,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                       SizedBox(
                         width: 8,
@@ -183,13 +188,14 @@ class MobileHome extends StatelessWidget {
         ),
         //My project
         Container(
+          key: key3,
           child: Column(
             children: [
               SectionTitle(title: 'My Project',),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
-                  height: H * 0.7,
+                  height: H * 0.5,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: ImageSlideshow(
@@ -236,6 +242,7 @@ class MobileHome extends StatelessWidget {
         ),
         //Client Project
         Container(
+          key: key4,
           child: Column(
             children: [
               SectionTitle(title: 'Client Project',),
